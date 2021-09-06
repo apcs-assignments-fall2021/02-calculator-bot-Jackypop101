@@ -7,19 +7,29 @@ public class MyMain {
         int x = 0;
         if (a>b) {
             x = a;
+            if (c>x) {
+                return (x);
+            }
+            else {
+                if (c>b) {
+                    return (c);
+                }
+                else {
+                    return (b);
+                }
+            }
         }
         else {
             x = b;
-        }
-        if (c>x) {
-            return (x);
-        }
-        else {
-            if (c>a) {
-                return (c);
+            if (c > x) {
+                return (x);
             }
             else {
-                return (a);
+                if (c > a) {
+                    return (c);
+                } else {
+                    return (a);
+                }
             }
         }
     }
@@ -39,15 +49,8 @@ public class MyMain {
     // Returns the "c" value from the Pythagorean theorem "a^2 + b^2 = c^2",
     // where "a" and "b" are the inputs to the method
     public static double pythagoras(int a, int b) {
-        double c = Math.sqrt(Math.pow(2,a) + Math.pow(2,b));
-        int f = (int)c;
-        double u = c - f;
-        if ( u >= 0.5 ) {
-            return(f + 1);
-        }
-        else {
-            return(f);
-        }
+        double c = Math.sqrt(Math.pow(a,2) + Math.pow(b,2));
+        return c;
     }
 
     public static void main(String[] args) {
@@ -57,29 +60,30 @@ public class MyMain {
         System.out.println(pythagoras(3, 4)); // should be 5.0
 
         Scanner scan = new Scanner(System.in);
-        System.out.println("What command would you like to carry out?");
+        System.out.println("What command would you like to carry out? (median, larger_absolute_value, pythagoras)");
         String command = scan.next();
-        if (command == "median") {
+        if (command.equals("median")) {
             System.out.println("What will be the first number?");
             int a = scan.nextInt();
             System.out.println("What will be the second number?");
             int b = scan.nextInt();
             System.out.println("What will be the third number?");
             int c = scan.nextInt();
-            System.out.println(median(a, b, c));
+            System.out.println(median(a,b,c));
         }
-        if (command == "larger absolute value") {
+        if (command.equals("larger_absolute_value")) {
             System.out.println("What will be the first number?");
             int a = scan.nextInt();
             System.out.println("What will be the second number?");
             int b = scan.nextInt();
             System.out.println(magnitude(a, b));
-    }
-        if (command == "pythagoras") {
+        }
+        if (command.equals("pythagoras")) {
             System.out.println("What will be the first number?");
             int a = scan.nextInt();
             System.out.println("What will be the second number?");
             int b = scan.nextInt();
             System.out.println(pythagoras(a, b));
         }
+    }
 }
